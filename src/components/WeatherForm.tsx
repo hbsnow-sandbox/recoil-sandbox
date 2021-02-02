@@ -32,10 +32,10 @@ export const WeatherForm: React.VFC = () => {
   const [cityId, setCityId] = useState<CityId>();
   const setStateCityId = useSetRecoilState(cityIdState);
 
-  const changeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeCity = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.currentTarget.value as CityId;
     setCityId(id);
-  };
+  }, []);
 
   const submit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
