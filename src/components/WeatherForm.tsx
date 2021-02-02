@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 import { useSetRecoilState } from "recoil";
 
@@ -32,19 +32,15 @@ export const WeatherForm: React.VFC = () => {
   const [cityId, setCityId] = useState<CityId>();
   const setStateCityId = useSetRecoilState(cityIdState);
 
-  const changeCity = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.currentTarget.value as CityId;
     setCityId(id);
-  }, []);
+  };
 
-  const submit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-
-      setStateCityId(cityId);
-    },
-    [cityId, setStateCityId]
-  );
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStateCityId(cityId);
+  };
 
   return <Component changeCity={changeCity} submit={submit} />;
 };
