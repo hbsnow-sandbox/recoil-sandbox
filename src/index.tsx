@@ -4,11 +4,13 @@ import ReactDOM from "react-dom";
 import { RecoilRoot } from "recoil";
 
 import { App } from "./App";
+import { DebugObserver } from "./components/DebugObserver";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
+      <DebugObserver />
       <App />
     </RecoilRoot>
   </React.StrictMode>,
