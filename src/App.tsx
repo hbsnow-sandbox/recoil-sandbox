@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 
+import { DebugButton } from "./components/DebugButton";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { WeatherForm } from "./components/WeatherForm";
 import { WeatherResult } from "./components/WeatherResult";
@@ -16,6 +17,10 @@ export const App: React.VFC = () => {
           <WeatherResult />
         </Suspense>
       </ErrorBoundary>
+
+      <hr />
+
+      <DebugButton />
     </>
   );
 };
