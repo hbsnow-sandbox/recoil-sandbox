@@ -29,21 +29,21 @@ const Component: React.VFC<Props> = (props) => {
 };
 
 export const WeatherForm: React.VFC = () => {
-  const [city, setCity] = useState<CityId>();
-  const setCityId = useSetRecoilState(cityIdState);
+  const [cityId, setCityId] = useState<CityId>();
+  const setStateCityId = useSetRecoilState(cityIdState);
 
   const changeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const cityId = e.currentTarget.value as CityId;
-    setCity(cityId);
+    const id = e.currentTarget.value as CityId;
+    setCityId(id);
   };
 
   const submit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      setCityId(city);
+      setStateCityId(cityId);
     },
-    [city, setCityId]
+    [cityId, setStateCityId]
   );
 
   return <Component changeCity={changeCity} submit={submit} />;
