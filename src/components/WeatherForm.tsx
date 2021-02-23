@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 import { cityIdState } from "../states/rootStates/cityId";
 import { cities, CityId } from "../utils/city";
+import { useRefreshCityId } from "../utils/hooks/useRefreshCityId";
 
 export const WeatherForm: React.VFC = () => {
   const [cityId, setCityId] = useState<CityId>();
-  const setStateCityId = useSetRecoilState(cityIdState);
+  const [stateCityId, setStateCityId] = useRecoilState(cityIdState);
+  const refresh = useRefreshCityId(stateCityId);
 
   const changeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const id = e.currentTarget.value as CityId;
@@ -30,6 +32,7 @@ export const WeatherForm: React.VFC = () => {
         ))}
       </select>
       <button type="submit">submit</button>
+      <button onClick={() => refresh()}>refresh</button>
     </form>
   );
 };
