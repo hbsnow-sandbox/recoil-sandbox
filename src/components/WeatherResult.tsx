@@ -2,12 +2,10 @@ import React from "react";
 
 import { useRecoilValue } from "recoil";
 
-import { cityIdState } from "../states/rootStates/cityId";
 import { weatherState } from "../states/rootStates/weather";
 
 export const WeatherResult: React.VFC = () => {
-  const cityId = useRecoilValue(cityIdState);
-  const weather = useRecoilValue(weatherState(cityId));
+  const weather = useRecoilValue(weatherState);
 
   if (!weather) {
     return null;
